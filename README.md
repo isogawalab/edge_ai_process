@@ -6,3 +6,7 @@
 ```bash
 uv run python prepare_dataset.py --input <入力ディレクトリ> --output <出力ディレクトリ>
 ```
+もしくは
+```bash
+python prepare_dataset.py --input <入力ディレクトリ> --output <出力ディレクトリ>
+```
