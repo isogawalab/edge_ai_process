@@ -110,8 +110,6 @@ def validate_output_root(output_root: Path, force: bool) -> None:
     managed_paths = [
         output_root / "id_train",
         output_root / "id_valid",
-        output_root / "train.csv",
-        output_root / "valid.csv",
     ]
     existing_paths = [path for path in managed_paths if path.exists()]
 
@@ -216,11 +214,13 @@ def build_dataset(args: argparse.Namespace) -> None:
     train_rows.sort(key=lambda row: row.relative_path)
     valid_rows.sort(key=lambda row: row.relative_path)
 
-    write_csv(output_root / "train.csv", train_rows)
-    write_csv(output_root / "valid.csv", valid_rows)
+    train_csv_path = output_root / "id_train" / "id_train.csv"
+    valid_csv_path = output_root / "id_valid" / "id_valid.csv"
+    write_csv(train_csv_path, train_rows)
+    write_csv(valid_csv_path, valid_rows)
 
-    print(f"Saved train.csv with {len(train_rows)} rows: {output_root / 'train.csv'}")
-    print(f"Saved valid.csv with {len(valid_rows)} rows: {output_root / 'valid.csv'}")
+    print(f"Saved id_train.csv with {len(train_rows)} rows: {train_csv_path}")
+    print(f"Saved id_valid.csv with {len(valid_rows)} rows: {valid_csv_path}")
 
     for warning in warnings:
         print(warning)
