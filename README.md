@@ -4,7 +4,7 @@
 
 
 ```bash
-uv run python prepare_dataset.py --input <入力ディレクトリ> --output <出力ディレクトリ>
+uv run prepare_dataset.py --input <入力ディレクトリ> --output <出力ディレクトリ>
 ```
 もしくは
 ```bash
